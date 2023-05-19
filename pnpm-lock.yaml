@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@auth0/auth0-spa-js': ^2.0.4
   '@changesets/changelog-git': ^0.1.14
   '@changesets/cli': ^2.26.1
   '@finsweet/eslint-config': ^2.0.4
@@ -19,6 +20,7 @@ specifiers:
   typescript: ^5.0.3
 
 dependencies:
+  '@auth0/auth0-spa-js': 2.0.4
   '@finsweet/ts-utils': 0.39.1
 
 devDependencies:
@@ -39,6 +41,10 @@ devDependencies:
   typescript: 5.0.3
 
 packages:
+
+  /@auth0/auth0-spa-js/2.0.4:
+    resolution: {integrity: sha512-NgD6Fkm5Xnbned1VjhEW8irm1/Y8AWtdSLexgLXNwwBVgfnYicCVBu8w75m2t+4QljXkTcI7IXVEFhVmxMuxaA==}
+    dev: false
 
   /@babel/code-frame/7.21.4:
     resolution: {integrity: sha512-LYvhNKfwWSPpocw8GI7gpK2nq3HSDuEPC/uSYaALSJu9xjsalaaYFOq0Pwt5KmVqwEbZlDu81aLXwBOmD/Fv9g==}
