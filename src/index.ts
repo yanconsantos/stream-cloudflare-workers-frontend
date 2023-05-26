@@ -1,5 +1,7 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 
+import { handleTODOsForm, loadTODOS } from './todos';
+
 const init = async () => {
   const client = await createAuth0Client({
     clientId: 'DJlKHrTvogfx7g6bhiPpskriHIgWzkjJ',
@@ -21,14 +23,8 @@ const init = async () => {
 
   console.log({ isLoggedIn });
 
-  if (isLoggedIn) {
-    const access_token = await client.getTokenSilently();
-    const user = await client.getUser();
-    console.log({ user, access_token });
-  }
-
   window.Webflow ||= [];
-  window.Webflow.push(() => {
+  window.Webflow.push(async () => {
     const loginElement = document.querySelector('[data-element="login"]');
     const logoutElement = document.querySelector('[data-element="logout"]');
     if (!loginElement || !logoutElement) return;
@@ -40,6 +36,17 @@ const init = async () => {
     logoutElement.addEventListener('click', async () => {
       await client.logout();
     });
+
+    if (!isLoggedIn) return;
+
+    const access_token = await client.getTokenSilently();
+    const user = await client.getUser();
+    console.log({ user, access_token });
+
+    handleTODOsForm(access_token);
+
+    const todos = await loadTODOS(access_token);
+    console.log({ todos });
   });
 };
 
